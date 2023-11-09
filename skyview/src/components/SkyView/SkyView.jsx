@@ -43,6 +43,14 @@ const Skyview = () => {
         }
     }
 
+    const dayOrNight = () => {
+        if (is_day === 0) {
+
+        } else {
+            
+        }
+    }
+
     const getBackgroundSwitch = () => {
         if (weather) {
 
@@ -111,16 +119,9 @@ const Skyview = () => {
                             <div className="text">Humidity</div>
                         </div>
                     </div>
-                    <div className="element">
-                        <img src="" alt="" />
-                        <div className="data">
-                            <div className="humidity-percent"></div>
-                            <div className="text">Wind Speed</div>
-                        </div>
-                    </div>
                 </div>
-                Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
             </div>
+                Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
         </section>
     )
 }
