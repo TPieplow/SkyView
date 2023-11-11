@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './SkyView.css';
+import SearchBar from '../SearchBar';
+import CurrentCondition from '../CurrentCondition';
+
 
 const Skyview = () => {
     let api_key = 'dec8c5f710ee43b8be2205905230611';
     const [weather, setWeather] = useState(null);
-    const [city, setCity] = useState('');
     const [temperature, setTemperature] = useState(null);
 
     useEffect(() => {
@@ -13,8 +15,7 @@ const Skyview = () => {
 
     useEffect(() => {
         if (weather?.current) {
-            const { temp_c, location, country, region, wind } = weather.current;
-
+            const { temp_c } = weather.current;
             if (temp_c) {
                 setTemperature(temp_c);
             }
@@ -32,25 +33,12 @@ const Skyview = () => {
         }
     };
 
-    const search = () => {
-        if (city !== '') {
-            getWeather(city);
-        } else {
-            console.log('City name is required for search');
-        }
-    };
-
-    const getCurrentCondition = (isDay, conditionCode) => {
-        const imageSrc = conditionCode?.icon ? conditionCode?.icon : isDay ? 'sun' : 'moon';
-
-        return <img src={imageSrc} alt={conditionCode?.text || (isDay ? 'sun' : 'moon')} />;
-    };
-
     const weatherMessages = {
         rain: "You better bring an umbrella with you",
         sunny: "Enjoy the weather",
         snow: "Get ready for a snowy day",
-        overcast: "Depressing, isnt it - get yourself som chocolate"
+        overcast: "Depressing, isnt it - get yourself som chocolate",
+        'partly cloudy': "Perfect weather for a jogg" 
     }
 
     const displayMessage = (weather) => {
@@ -91,20 +79,9 @@ const Skyview = () => {
     return (
         <section className={`app-container ${getBackgroundSwitch(weather)}`}>
             <div className='container'>
-                <div className='top-bar'>
-                    <input
-                        type="text"
-                        className='cityInput'
-                        placeholder='Search ...'
-                        value={city}
-                        onChange={(e) => setCity(e?.target?.value)}
-                    />
-                    <div className='search-icon' onClick={search}>
-                        <i className="fa-sharp fa-light fa-magnifying-glass-location"></i>
-                    </div>
-                </div>
+                <SearchBar />
                 <div className="weather-image">
-                    {getCurrentCondition(weather?.current?.is_day, weather?.current?.condition)}
+                    <CurrentCondition isDay={weather?.current?.is_day} conditionCode={weather?.current?.condition} />
                     {displayMessage(weather)}
                     <div className="weather-temp"> {temperature ? `${temperature}°C` : 'N/A'} </div>
                     <div className="weather-temp">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
@@ -129,7 +106,6 @@ const Skyview = () => {
                 </div>
             </div>
             Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
-            <a href="">7 days forecast</a>
         </section>
     );
 };
