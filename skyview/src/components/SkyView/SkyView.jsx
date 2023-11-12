@@ -38,7 +38,7 @@ const Skyview = () => {
         sunny: "Enjoy the weather",
         snow: "Get ready for a snowy day",
         overcast: "Depressing, isnt it - get yourself som chocolate",
-        'partly cloudy': "Perfect weather for a jogg" 
+        'partly cloudy': "Perfect weather for a jogg"
     }
 
     const displayMessage = (weather) => {
@@ -48,7 +48,7 @@ const Skyview = () => {
                 return weatherMessages[conditionText]
             } else {
                 return `${conditionText}`
-            } 
+            }
         } else {
             return "Weather information is not available"
         }
@@ -57,7 +57,7 @@ const Skyview = () => {
     const getBackgroundSwitch = (weather) => {
         if (weather?.current) {
             const condition = weather?.current?.condition?.text.toLowerCase();
-            
+
             switch (condition) {
                 case 'rainy':
                     return 'rainy-background';
@@ -75,18 +75,17 @@ const Skyview = () => {
         }
         return 'default-background';
     };
-    console.log(getBackgroundSwitch(weather))
     return (
         <section className={`app-container ${getBackgroundSwitch(weather)}`}>
             <div className='container'>
                 <SearchBar />
+                    <div className="weather-location"> {weather ? weather?.location?.name : 'N/A'} </div>
                 <div className="weather-image">
                     <CurrentCondition isDay={weather?.current?.is_day} conditionCode={weather?.current?.condition} />
-                    {displayMessage(weather)}
                     <div className="weather-temp"> {temperature ? `${temperature}°C` : 'N/A'} </div>
-                    <div className="weather-temp">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
-                    <div className="weather-location"> {weather ? weather?.location?.name : 'N/A'} </div>
                 </div>
+                <div className="weather-temp">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
+                {displayMessage(weather)}
                 {weather ? (
                     <div key={api_key}>
                         <p>{weather?.current?.condition?.text}</p>
@@ -94,13 +93,16 @@ const Skyview = () => {
                 ) : (
                     <p>No weather found</p>
                 )}
-                <div className="wind-speed">{weather?.current.wind_kph ? `${((weather?.current?.wind_kph * 1000) / 3600).toFixed(1)} m/s` : 'N/A'}</div>
                 <div className="data-container">
                     <div className="element">
                         <img src="" alt="" />
                         <div className="data">
                             <div className="humidity-percent">{weather ? `${weather?.current?.humidity}%` : 'N/A'}</div>
                             <div className="text">Humidity</div>
+                        </div>
+                        <div className="data">
+                            <div className="wind-speed">{weather?.current.wind_kph ? `${((weather?.current?.wind_kph * 1000) / 3600).toFixed(1)} m/s` : 'N/A'}</div>
+                            <div className="text">Wind</div>
                         </div>
                     </div>
                 </div>
