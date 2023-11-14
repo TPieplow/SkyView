@@ -6,7 +6,7 @@ const SearchBar = ({ onSearch }) => {
 
     const search = () => {
         if (city !== '') {
-            onSearch(city);
+            onSearch(city.trim());
         } else {
             console.log('City name is requiered for search')
         }
@@ -19,7 +19,7 @@ const SearchBar = ({ onSearch }) => {
                 className='cityInput'
                 placeholder='Search...'
                 value={city}
-                onChange={(e) => setCity(e?.raget?.value)}
+                onChange={(e) => setCity(e.target.value)}
             />
             <div className='search-icon' onClick={search}>
                 <i className="fa-sharp fa-light fa-magnifying-glass-location"></i>

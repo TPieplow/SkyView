@@ -34,8 +34,8 @@ const Skyview = () => {
     };
 
     const weatherMessages = {
-        rain: "You better bring an umbrella with you",
-        sunny: "Enjoy the weather",
+        rain: "I didnt generate this, promise",
+        sunny: "Enjoy the weather I generated for you!",
         snow: "Get ready for a snowy day",
         overcast: "Depressing, isnt it - get yourself som chocolate",
         'partly cloudy': "Perfect weather for a jogg"
@@ -78,13 +78,13 @@ const Skyview = () => {
     return (
         <section className={`app-container ${getBackgroundSwitch(weather)}`}>
             <div className='container'>
-                <SearchBar />
+                <SearchBar onSearch={getWeather}/>
                     <div className="weather-location"> {weather ? weather?.location?.name : 'N/A'} </div>
                 <div className="weather-image">
                     <CurrentCondition isDay={weather?.current?.is_day} conditionCode={weather?.current?.condition} />
                     <div className="weather-temp"> {temperature ? `${temperature}°C` : 'N/A'} </div>
                 </div>
-                <div className="weather-temp">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
+                <div className="weather-temp-feels">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
                 {displayMessage(weather)}
                 {weather ? (
                     <div key={api_key}>

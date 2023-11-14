@@ -78,6 +78,13 @@
             font-weight: 400;
         }
 
+        .weather-temp-feels {
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
         .weather-location {
             display: flex;
             justify-content: center;

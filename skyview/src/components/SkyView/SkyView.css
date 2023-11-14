@@ -72,6 +72,12 @@
   font-size: 60px;
   font-weight: 400;
 }
+.app-container .container .weather-temp-feels {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
 .app-container .container .weather-location {
   display: flex;
   justify-content: center;
