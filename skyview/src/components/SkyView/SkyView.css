@@ -1,23 +1,28 @@
 .app-container.rainy-background {
-  background-color: darkblue;
+  background-image: url(../../assets/images/rainy-AI.png);
 }
 
 .app-container.sunny-background {
-  background-color: yellow;
+  background-image: url(../../assets/images/Sunny-background.jpg);
 }
 
 .app-container.snowy-background {
-  background-color: lightblue;
+  background-image: url(../../assets/images/snowy-AI.png);
 }
 
 .app-container.windy-background {
-  background-color: darkblue;
+  background-image: url(../../assets/images/windy-AI.png);
 }
 
 .app-container.overcast-background {
   background-color: gray;
 }
 
+.app-container {
+  background-image: url(../../assets/images/overcast-AI.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .app-container .container {
   display: flex;
   flex-direction: column;
@@ -78,6 +83,15 @@
   color: white;
   font-size: 20px;
 }
+.app-container .container .message {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 26px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 150px;
+}
 .app-container .container .weather-location {
   display: flex;
   justify-content: center;
@@ -94,8 +108,9 @@
 .app-container .container .element {
   margin: auto;
   display: flex;
-  align-items: flex-start;
-  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .app-container .container .data {
   font-size: 34px;

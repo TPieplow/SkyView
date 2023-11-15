@@ -12,6 +12,13 @@ const SearchBar = ({ onSearch }) => {
         }
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key ==='Enter') {
+            e.preventDefault();
+            search();
+        }
+    }
+
     return (
         <div className='top-bar'>
             <input
@@ -20,6 +27,7 @@ const SearchBar = ({ onSearch }) => {
                 placeholder='Search...'
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
+                onKeyDown={handleKeyDown}
             />
             <div className='search-icon' onClick={search}>
                 <i className="fa-sharp fa-light fa-magnifying-glass-location"></i>
