@@ -7,7 +7,7 @@
 
   "scripts": {
     "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d dist",
+    "deploy" : "gh-pages -d public",
     "dev": "vite",
     "build": "vite build --outDir=public",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
