@@ -28,7 +28,6 @@ const Skyview = () => {
         try {
             const result = await fetch(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${query}`);
             const weatherData = await result.json();
-
             if (result.ok) {
                 setWeather(weatherData);
             } else {
@@ -40,13 +39,11 @@ const Skyview = () => {
         }
     };
 
-    const succesBox = () => {
-        toast.success('Its working')
-    }
-
     const alertBox = () => {
-        toast.error('Not a valid city')
-    }
+        toast.error('Not a valid city', {
+            theme: "dark"
+        })
+    };
 
     const weatherMessages = {
         rain: "I didnt generate this, promise",
@@ -54,7 +51,7 @@ const Skyview = () => {
         snow: "Get ready for a snowy day",
         overcast: "Depressing, isnt it - get yourself som chocolate",
         'partly cloudy': "Perfect weather for a jogg"
-    }
+    };
 
     const displayMessage = (weather) => {
         if (weather?.current?.condition) {
@@ -67,7 +64,7 @@ const Skyview = () => {
         } else {
             return "Weather information is not available"
         }
-    }
+    };
 
     const getBackgroundSwitch = (weather) => {
         if (weather?.current) {
@@ -104,7 +101,6 @@ const Skyview = () => {
                 <div className='message'>
                     {displayMessage(weather)}
                 </div>
-
                 <div className="data-container">
                     <div className="element">
                         <img src="" alt="" />
