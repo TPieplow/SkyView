@@ -56,7 +56,7 @@ const Skyview = () => {
 
     const getWeather = async (query) => {
         try {
-            const result = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=dec8c5f710ee43b8be2205905230611&q=${query}&days=1&aqi=no&alerts=no`);
+            const result = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=dec8c5f710ee43b8be2205905230611&q=${query}&days=1&aqi=no&alerts=no`);
             const weatherData = await result.json();
             if (result.ok) {
                 setWeather(weatherData);
