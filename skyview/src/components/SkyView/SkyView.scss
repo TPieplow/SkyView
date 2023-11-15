@@ -19,16 +19,17 @@
 }
 
 .app-container.overcast-background {
-    background-color: gray;
+    background-image: url(../../assets/images/rainy-AI.png);
     object-fit: cover;
 }
 
 .app-container {
-    background-image: url(../../assets/images/overcast-AI.png);
+    // background-image: url(../../assets/images/rainy-AI.png);
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
     padding-top: 75px;
+    overflow-y: hidden;
 
     .container {
         display: flex;
@@ -40,7 +41,8 @@
         margin: 0 auto;
         padding: 15px;
         border-radius: 14px;
-        background-image: linear-gradient(180deg, #C5EE4F 0%, #BAE4AC 100%);
+        // background-image: linear-gradient(180deg, #C5EE4F 0%, #BAE4AC 100%);
+        background-color: #1d1c1c;
 
         .top-bar {
             display: flex;
@@ -115,33 +117,38 @@
         }
 
         .data-container {
+            border: 1px solid #363636;
+            background-color: #363636;
             margin-top: 50px;
+            padding: 15px;
+            border-radius: 14px;
             color: white;
             display: flex;
             justify-content: center;
+            gap: 30px;
+            box-shadow: 0px 0px 20px 10px #050505;
+
+            .data {
+                font-size: 24px;
+                font-weight: 400;
+            }
+
+            .text {
+                color: #FFF;
+                font-size: 20px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+
+            .icon {
+                margin-top: 10px;
+            }
         }
-
-        .element {
-            margin: auto;
-            display: flex;
-
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .data {
-            font-size: 24px;
-            font-weight: 400;
-        }
-
         .text {
-            font-size: 20px;
-            font-weight: 400;
+            color: #FFF;
         }
-
-        .icon {
-            margin-top: 10px;
+        .wind-speed {
+            color: #FFF;
         }
     }
 }
