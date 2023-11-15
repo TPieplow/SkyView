@@ -4,27 +4,37 @@
 }
 
 .app-container.sunny-background {
-    background-image: url(../../assets/images/Sunny-background.jpg);
+    background-image: url(../../assets/images/sunny.jpg);
     object-fit: cover;
 }
 
 .app-container.snowy-background {
-    background-image: url(../../assets/images/snowy-AI.png);
+    background-image: url(../../assets/images/snowy.jpg);
     object-fit: cover;
 }
 
 .app-container.windy-background {
-    background-image: url(../../assets/images/windy-AI.png);
+    background-image: url(../../assets/images/windy.png);
     object-fit: cover;
 }
 
 .app-container.overcast-background {
-    background-image: url(../../assets/images/rainy-AI.png);
+    background-image: url(../../assets/images/overcast.jpg);
+    object-fit: cover;
+}
+
+.app-container.thunder-background {
+    background-image: url(../../assets/images/thunderstorm.jpg);
+    object-fit: cover;
+}
+
+.app-container.default-background {
+    background-image: url(../../assets/images/overcast.jpg);
     object-fit: cover;
 }
 
 .app-container {
-    // background-image: url(../../assets/images/rainy-AI.png);
+    // background-image: url(../../assets/images/overcast.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
@@ -144,9 +154,11 @@
                 margin-top: 10px;
             }
         }
+
         .text {
             color: #FFF;
         }
+
         .wind-speed {
             color: #FFF;
         }

@@ -4,6 +4,7 @@ import './SkyView.css';
 import SearchBar from '../SearchBar';
 import CurrentCondition from '../CurrentCondition';
 import 'react-toastify/dist/ReactToastify.css';
+import { format } from 'date-fns';
 
 
 const Skyview = () => {
@@ -69,6 +70,17 @@ const Skyview = () => {
         }
     };
 
+    const convertToLocalTime = (apiTime) => {
+        try {
+            const utcDate = new Date(`2020-01-20 ${apiTime}`);
+            const localDate = format(utcDate, 'HH:mm', { timeZone: 'Europe/Stockholm' })
+            return localDate;
+        } catch (error) {
+            console.error('Error converting', error);
+            return 'N/A'
+        }
+    };
+
     const alertBox = () => {
         toast.error('Not a valid city', {
             theme: "dark"
@@ -109,6 +121,8 @@ const Skyview = () => {
                     return 'snowy-background';
                 case 'windy':
                     return 'windy-background';
+                case 'partly cloudy':
+                    return 'overcast-background';
                 case 'overcast':
                     return 'overcast-background'
                 default:
@@ -138,12 +152,12 @@ const Skyview = () => {
                     <div className="data">
                         <i className="fa-regular fa-sunrise"></i>
                         <div className="text">Sunrise</div>
-                        <div className="api-data">{weather ? weather?.forecast?.forecastday?.[0]?.astro.sunrise : 'N/A'} </div>
+                        <div className="api-data">{weather ? convertToLocalTime(weather?.forecast?.forecastday?.[0]?.astro.sunrise) : 'N/A'} </div>
                     </div>
                     <div className="data">
                         <i className="fa-regular fa-sunset"></i>
                         <div className="text">Sunset</div>
-                        <div className="api-data">{weather ? weather?.forecast?.forecastday?.[0]?.astro.sunset : 'N/A'} </div>
+                        <div className="api-data">{weather ? convertToLocalTime(weather?.forecast?.forecastday?.[0]?.astro.sunset) : 'N/A'} </div>
                     </div>
                     <div className="data">
                         <i className="fa-regular fa-temperature-arrow-down"></i>
