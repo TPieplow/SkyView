@@ -1,23 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
-
-    const [city, setCity] = useState('')
+    const [city, setCity] = useState('');
 
     const search = () => {
         if (city !== '') {
             onSearch(city.trim());
-        } else {
-            console.log('City name is requiered for search')
-        }
-    }
+        } 
+    };
 
     const handleKeyDown = (e) => {
         if (e.key ==='Enter') {
             e.preventDefault();
             search();
         }
-    }
+    };
 
     return (
         <div className='top-bar'>

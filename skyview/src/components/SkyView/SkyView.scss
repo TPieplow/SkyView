@@ -22,6 +22,7 @@
     background-image: url(../../assets/images/overcast-AI.png);
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 75px;
 
     .container {
         display: flex;
@@ -32,7 +33,6 @@
         height: 829px;
         margin: 0 auto;
         padding: 15px;
-        margin-top: 75px;
         border-radius: 14px;
         background-image: linear-gradient(180deg, #C5EE4F 0%, #BAE4AC 100%);
 
@@ -102,8 +102,9 @@
         .weather-location {
             display: flex;
             justify-content: center;
+            margin-top: 46px;
             color: white;
-            font-size: 20px;
+            font-size: 66px;
             font-weight: 400;
         }
 
@@ -117,13 +118,14 @@
         .element {
             margin: auto;
             display: flex;
-            justify-content: center;
+
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
         }
 
         .data {
-            font-size: 34px;
+            font-size: 24px;
             font-weight: 400;
         }
 

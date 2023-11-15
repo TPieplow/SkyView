@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import './SkyView.css';
 import SearchBar from '../SearchBar';
 import CurrentCondition from '../CurrentCondition';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Skyview = () => {
@@ -24,14 +26,27 @@ const Skyview = () => {
 
     const getWeather = async (query) => {
         try {
-            const result = await fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${query}`);
+            const result = await fetch(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${query}`);
             const weatherData = await result.json();
-            setWeather(weatherData);
-            console.log(weatherData)
+
+            if (result.ok) {
+                setWeather(weatherData);
+            } else {
+                alertBox();
+            }
         } catch (error) {
             console.error('Error fetching weather', error);
+            alertBox();
         }
     };
+
+    const succesBox = () => {
+        toast.success('Its working')
+    }
+
+    const alertBox = () => {
+        toast.error('Not a valid city')
+    }
 
     const weatherMessages = {
         rain: "I didnt generate this, promise",
@@ -77,9 +92,10 @@ const Skyview = () => {
     };
     return (
         <section className={`app-container ${getBackgroundSwitch(weather)}`}>
+            <ToastContainer position='top-left' autoClose={6000} />
             <div className='container'>
                 <SearchBar onSearch={getWeather} />
-                <div className="weather-location"> {weather ? weather?.location?.name : 'N/A'} </div>
+                <div className="weather-location"> {weather ? weather?.location?.name : 'Location not available'} </div>
                 <div className="weather-image">
                     <CurrentCondition isDay={weather?.current?.is_day} conditionCode={weather?.current?.condition} />
                     <div className="weather-temp"> {temperature ? `${temperature}°C` : 'N/A'} </div>
