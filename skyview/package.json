@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://TPieplow.github.io/skyview/",
+  "homepage": "https://tpieplow.github.io/skyview/",
 
   "scripts": {
     "predeploy" : "npm run build",
