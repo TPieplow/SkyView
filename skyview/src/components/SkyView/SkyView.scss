@@ -1,27 +1,33 @@
 .app-container.rainy-background {
     background-image: url(../../assets/images/rainy-AI.png);
+    object-fit: cover;
 }
 
 .app-container.sunny-background {
     background-image: url(../../assets/images/Sunny-background.jpg);
+    object-fit: cover;
 }
 
 .app-container.snowy-background {
     background-image: url(../../assets/images/snowy-AI.png);
+    object-fit: cover;
 }
 
 .app-container.windy-background {
     background-image: url(../../assets/images/windy-AI.png);
+    object-fit: cover;
 }
 
 .app-container.overcast-background {
     background-color: gray;
+    object-fit: cover;
 }
 
 .app-container {
     background-image: url(../../assets/images/overcast-AI.png);
     background-repeat: no-repeat;
     background-size: cover;
+    object-fit: cover;
     padding-top: 75px;
 
     .container {

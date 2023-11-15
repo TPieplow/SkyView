@@ -26,10 +26,11 @@ const Skyview = () => {
 
     const getWeather = async (query) => {
         try {
-            const result = await fetch(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${query}`);
+            const result = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=dec8c5f710ee43b8be2205905230611&q=${query}&days=1&aqi=no&alerts=no`);
             const weatherData = await result.json();
             if (result.ok) {
                 setWeather(weatherData);
+                console.log(weatherData)
             } else {
                 alertBox();
             }
@@ -92,6 +93,8 @@ const Skyview = () => {
             <ToastContainer position='top-left' autoClose={6000} />
             <div className='container'>
                 <SearchBar onSearch={getWeather} />
+                <div className="est-temp">{weather ? weather?.forecast?.forecastday?.[0]?.day?.mintemp_c : 'N/A'}</div>
+                <div className="est-temp">{weather ? weather?.forecast?.forecastday?.[0]?.day?.maxtemp_c : 'N/A'}</div>
                 <div className="weather-location"> {weather ? weather?.location?.name : 'Location not available'} </div>
                 <div className="weather-image">
                     <CurrentCondition isDay={weather?.current?.is_day} conditionCode={weather?.current?.condition} />
