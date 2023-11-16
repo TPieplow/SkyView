@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .app-container.rainy-background {
   background-image: url(../../assets/images/rainy-AI.png);
   -o-object-fit: cover;
@@ -46,7 +50,6 @@
   -o-object-fit: cover;
      object-fit: cover;
   padding-top: 75px;
-  overflow-y: hidden;
 }
 .app-container .container {
   display: flex;
