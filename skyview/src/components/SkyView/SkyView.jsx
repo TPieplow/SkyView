@@ -115,6 +115,8 @@ const Skyview = () => {
             switch (condition) {
                 case 'rainy':
                     return 'rainy-background';
+                case 'moderate rain':
+                    return 'rainy-background';
                 case 'sunny':
                     return 'sunny-background';
                 case 'snowy':
