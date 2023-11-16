@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 
 const Skyview = () => {
-    let api_key = 'dec8c5f710ee43b8be2205905230611';
+    // let api_key = 'dec8c5f710ee43b8be2205905230611';
     const [weather, setWeather] = useState(null);
     const [temperature, setTemperature] = useState(null);
     const [isLocation, setIsLocation] = useState(false);
@@ -21,7 +21,7 @@ const Skyview = () => {
 
     useEffect(() => {
         if (isLocation) {
-            getWeather('Blentarp');
+            getWeather('Malmö');
         }
     }, [isLocation]);
 
@@ -135,18 +135,36 @@ const Skyview = () => {
     };
     return (
         <section className={`app-container ${getBackgroundSwitch(weather)}`}>
-            <ToastContainer position='top-left' autoClose={6000} />
+            <ToastContainer
+                position='top-left'
+                autoClose={6000}
+            />
             <div className='container'>
-                <SearchBar onSearch={getWeather} />
-                <div className="weather-location"> {weather ? weather?.location?.name : 'Location not available'} </div>
-                <div className="weather-image">
-                    <CurrentCondition isDay={weather?.current?.is_day} conditionCode={weather?.current?.condition} />
-                    <div className="weather-temp"> {temperature ? `${temperature}°C` : 'N/A'} </div>
+                <SearchBar
+                    onSearch={getWeather}
+                />
+                <div className="weather-location">
+                    {weather ? weather?.location?.name : 'Location not available'}
                 </div>
-                <div className="weather-temp-feels">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
+                <div className="weather-image">
+                    <CurrentCondition
+                        isDay={weather?.current?.is_day}
+                        conditionCode={weather?.current?.condition}
+                    />
+                    <div className="weather-temp">
+                        {temperature ? `${temperature}°C` : 'N/A'}
+                    </div>
+                </div>
+                <div className="weather-temp-feels">
+                    Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}
+                </div>
                 <div className="wind-data">
-                    <div className="text">Wind:</div>
-                    <div className="wind-speed">{weather?.current.wind_kph ? `${((weather?.current?.wind_kph * 1000) / 3600).toFixed(1)} m/s` : 'N/A'}</div>
+                    <div className="text">
+                        Wind:
+                    </div>
+                    <div className="wind-speed">
+                        {weather?.current.wind_kph ? `${((weather?.current?.wind_kph * 1000) / 3600).toFixed(1)} m/s` : 'N/A'}
+                    </div>
                 </div>
                 <div className='message'>
                     {displayMessage(weather)}
@@ -155,23 +173,39 @@ const Skyview = () => {
                     <img src="" alt="" />
                     <div className="data">
                         <i className="fa-regular fa-sunrise"></i>
-                        <div className="text">Sunrise</div>
-                        <div className="api-data">{weather ? convertToLocalTime(weather?.forecast?.forecastday?.[0]?.astro.sunrise) : 'N/A'} </div>
+                        <div className="text">
+                            Sunrise
+                        </div>
+                        <div className="api-data">
+                            {weather ? convertToLocalTime(weather?.forecast?.forecastday?.[0]?.astro.sunrise) : 'N/A'}
+                        </div>
                     </div>
                     <div className="data">
                         <i className="fa-regular fa-sunset"></i>
-                        <div className="text">Sunset</div>
-                        <div className="api-data">{weather ? convertToLocalTime(weather?.forecast?.forecastday?.[0]?.astro.sunset) : 'N/A'} </div>
+                        <div className="text">
+                            Sunset
+                        </div>
+                        <div className="api-data">
+                            {weather ? convertToLocalTime(weather?.forecast?.forecastday?.[0]?.astro.sunset) : 'N/A'}
+                        </div>
                     </div>
                     <div className="data">
                         <i className="fa-regular fa-temperature-arrow-down"></i>
-                        <div className="text">Est min. temp</div>
-                        <div className="api-data">{weather ? weather?.forecast?.forecastday?.[0]?.day?.mintemp_c : 'N/A'}</div>
+                        <div className="text">
+                            Est min. temp
+                        </div>
+                        <div className="api-data">
+                            {weather ? weather?.forecast?.forecastday?.[0]?.day?.mintemp_c : 'N/A'}
+                        </div>
                     </div>
                     <div className="data">
                         <i className="fa-regular fa-temperature-arrow-up"></i>
-                        <div className="text">Est max. temp</div>
-                        <div className="api-data">{weather ? weather?.forecast?.forecastday?.[0]?.day?.maxtemp_c : 'N/A'}</div>
+                        <div className="text">
+                            Est max. temp
+                        </div>
+                        <div className="api-data">
+                            {weather ? weather?.forecast?.forecastday?.[0]?.day?.maxtemp_c : 'N/A'}
+                        </div>
                     </div>
                 </div>
             </div>
