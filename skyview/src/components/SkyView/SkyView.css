@@ -1,5 +1,11 @@
 * {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 .app-container.rainy-background {
@@ -49,7 +55,8 @@
   background-size: cover;
   -o-object-fit: cover;
      object-fit: cover;
-  padding-top: 75px;
+  height: 100vh;
+  padding-top: 84px;
 }
 .app-container .container {
   display: flex;
@@ -108,15 +115,21 @@
   justify-content: center;
   color: white;
   font-size: 20px;
+  margin-top: 15px;
 }
 .app-container .container .message {
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 400;
-  margin-top: 20px;
-  margin-bottom: 150px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+.app-container .container .wind-data {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
 }
 .app-container .container .weather-location {
   display: flex;
@@ -155,5 +168,8 @@
   color: #FFF;
 }
 .app-container .container .wind-speed {
+  color: #FFF;
+}
+.app-container a {
   color: #FFF;
 }

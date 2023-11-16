@@ -13,14 +13,14 @@ const Skyview = () => {
     const [temperature, setTemperature] = useState(null);
     const [isLocation, setIsLocation] = useState(false);
 
-    useEffect (() => {
-        if(!isLocation) {
+    useEffect(() => {
+        if (!isLocation) {
             getCurrentLocation();
         }
     }, [isLocation])
 
     useEffect(() => {
-        if(isLocation) {
+        if (isLocation) {
             getWeather('Blentarp');
         }
     }, [isLocation]);
@@ -91,7 +91,7 @@ const Skyview = () => {
         rain: "I didnt generate this, promise",
         sunny: "Enjoy the weather I generated for you!",
         snow: "Get ready for a snowy day",
-        overcast: "Depressing, isnt it - get yourself som chocolate",
+        overcast: "The sky might be gray, but your day doesnt have to be!",
         'partly cloudy': "Perfect weather for a jogg"
     };
 
@@ -144,8 +144,10 @@ const Skyview = () => {
                     <div className="weather-temp"> {temperature ? `${temperature}°C` : 'N/A'} </div>
                 </div>
                 <div className="weather-temp-feels">Feels like {temperature ? weather?.current?.feelslike_c : 'N/A'}</div>
-                <div className="wind-speed">{weather?.current.wind_kph ? `${((weather?.current?.wind_kph * 1000) / 3600).toFixed(1)} m/s` : 'N/A'}</div> 
-                <div className="text">Wind</div>
+                <div className="wind-data">
+                    <div className="text">Wind:</div>
+                    <div className="wind-speed">{weather?.current.wind_kph ? `${((weather?.current?.wind_kph * 1000) / 3600).toFixed(1)} m/s` : 'N/A'}</div>
+                </div>
                 <div className='message'>
                     {displayMessage(weather)}
                 </div>
