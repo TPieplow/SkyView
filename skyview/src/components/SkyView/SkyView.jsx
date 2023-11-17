@@ -92,7 +92,7 @@ const Skyview = () => {
         sunny: "Enjoy the weather I generated for you!",
         snow: "Get ready for a snowy day",
         overcast: "The sky might be gray, but your day doesnt have to be!",
-        'partly cloudy': "Perfect weather for a jogg"
+        'partly cloudy': "Perfect weather for a run"
     };
 
     const displayMessage = (weather) => {
